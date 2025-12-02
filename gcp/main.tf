@@ -7,13 +7,13 @@ provider "google" {
 }
 
 resource "google_service_account" "terraform_stacks_sa" {
-  account_id   = local.resource_name
+  account_id = local.resource_name
 
   project = var.gcp_project_id
 }
 
 resource "random_pet" "workload_identity_name" {
-  length = 2
+  length    = 2
   separator = "-"
 }
 
@@ -46,7 +46,7 @@ resource "google_iam_workload_identity_pool_provider" "terraform_stacks_provider
   workload_identity_pool_id          = google_iam_workload_identity_pool.terraform_stacks_pool.workload_identity_pool_id
   workload_identity_pool_provider_id = "stacks"
 
-  description                        = "OIDC identity pool provider for Terraform Stacks"
+  description = "OIDC identity pool provider for Terraform Stacks"
 
   attribute_mapping = {
     "google.subject"                            = "assertion.sub",

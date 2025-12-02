@@ -20,7 +20,7 @@ resource "azuread_application" "tfc_application" {
 }
 
 resource "azuread_service_principal" "tfc_service_principal" {
-  client_id                    = azuread_application.tfc_application.client_id
+  client_id = azuread_application.tfc_application.client_id
   # app_role_assignment_required = false
   # owners                       = [data.azuread_client_config.current.object_id]
 }
